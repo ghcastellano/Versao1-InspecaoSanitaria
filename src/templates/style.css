@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+@page {
+    size: A4;
+    margin: 2cm;
+    @top-center {
+        content: "Relatório de Inspeção Sanitária - Plano de Ação";
+        font-family: 'Inter', sans-serif;
+        font-size: 9pt;
+        color: #888;
+    }
+    @bottom-right {
+        content: "Página " counter(page) " de " counter(pages);
+        font-family: 'Inter', sans-serif;
+        font-size: 9pt;
+        color: #888;
+    }
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.5;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #2563eb;
+    padding-bottom: 1rem;
+}
+
+h1 {
+    color: #1e3a8a;
+    font-size: 24pt;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    color: #64748b;
+    font-size: 12pt;
+}
+
+.meta-info {
+    margin-bottom: 2rem;
+    background-color: #f8fafc;
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid #3b82f6;
+}
+
+.meta-info p {
+    margin: 0.25rem 0;
+}
+
+h2 {
+    color: #1e40af;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 0.5rem;
+    margin-top: 2rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    font-size: 10pt;
+}
+
+th, td {
+    border: 1px solid #cbd5e1;
+    padding: 0.75rem;
+    text-align: left;
+    vertical-align: top;
+}
+
+th {
+    background-color: #f1f5f9;
+    color: #334155;
+    font-weight: 600;
+}
+
+/* Zebra striping */
+tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+.priority-Alta {
+    color: #dc2626;
+    font-weight: bold;
+}
+
+.priority-Média {
+    color: #d97706;
+}
+
+.priority-Baixa {
+    color: #16a34a;
+}
+
+.resumo {
+    background-color: #fffbeb;
+    border: 1px solid #fcd34d;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+footer {
+    margin-top: 3rem;
+    text-align: center;
+    font-size: 9pt;
+    color: #94a3b8;
+    border-top: 1px solid #cbd5e1;
+    padding-top: 1rem;
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ dados.titulo }}</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Inlining critical styles for WeasyPrint ensures consistency if external file is missed */
+        /* ... existing styles are in style.css, WeasyPrint handles external links well if path is correct ... */
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>{{ dados.titulo }}</h1>
+        <div class="subtitle">Plano de Ação Corretiva - RDC 216</div>
+    </header>
+
+    <div class="meta-info">
+        <p><strong>Estabelecimento:</strong> {{ dados.estabelecimento }}</p>
+        <p><strong>Data de Geração:</strong> {{ dados.data_inspecao }}</p>
+    </div>
+
+    <div class="resumo">
+        <h2>Resumo Geral</h2>
+        <p>{{ dados.resumo_geral }}</p>
+        
+        {% if dados.pontos_fortes %}
+        <h3>Pontos Fortes</h3>
+        <ul>
+            {% for ponto in dados.pontos_fortes %}
+            <li>{{ ponto }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+
+    <h2>Não Conformidades e Ações Corretivas</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 25%;">Não Conformidade</th>
+                <th style="width: 45%;">Ação Corretiva Sugerida</th>
+                <th style="width: 15%;">Prioridade</th>
+                <th style="width: 15%;">Prazo</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for nc in dados.nao_conformidades %}
+                {% for acao in nc.acoes_corretivas %}
+                <tr>
+                    {% if loop.first %}
+                    <td rowspan="{{ nc.acoes_corretivas|length }}">
+                        <strong>{{ nc.item }}</strong><br>
+                        {{ nc.descricao }}<br>
+                        <em style="font-size: 0.8em; color: #666;">Ref: {{ nc.legislacao_relacionada }}</em>
+                    </td>
+                    {% endif %}
+                    <td>{{ acao.descricao }}</td>
+                    <td><span class="priority-{{ acao.prioridade }}">{{ acao.prioridade }}</span></td>
+                    <td>{{ acao.prazo_sugerido }}</td>
+                </tr>
+                {% endfor %}
+                {% if not nc.acoes_corretivas %}
+                <tr>
+                    <td>
+                        <strong>{{ nc.item }}</strong><br>
+                        {{ nc.descricao }}<br>
+                        <em style="font-size: 0.8em; color: #666;">Ref: {{ nc.legislacao_relacionada }}</em>
+                    </td>
+                    <td colspan="3"><em>Nenhuma ação específica listada.</em></td>
+                </tr>
+                {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <footer>
+        <p>Documento gerado automaticamente por Assistente de Engenharia Sanitária (AI Powered).</p>
+        <p>&copy; 2024 MVP Inspeção Sanitária</p>
+    </footer>
+
+</body>
+</html>

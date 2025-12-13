@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+*.env
+
+# Google Cloud
+credentials.json
+client_secret.json
+
+# Tool generated
+01_ENTRADA_RELATORIOS/
+02_PLANOS_GERADOS/
+03_PROCESSADOS_BACKUP/
+99_ERROS/
+
+# OS
+.DS_Store

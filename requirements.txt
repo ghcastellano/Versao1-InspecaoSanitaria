@@ -1,0 +1,10 @@
+google-cloud-storage
+google-auth
+google-api-python-client
+vertexai
+weasyprint
+jinja2
+pydantic
+httpx
+structlog
+python-dotenv
